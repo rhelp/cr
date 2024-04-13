@@ -1,0 +1,11 @@
+services:
+  registry:
+    image: registry:2
+    container_name: registry
+    restart: unless-stopped
+    ports:
+      - "443:443"
+    env_file: .env
+    volumes:
+      - ./config.yaml:/etc/docker/registry/config.yml:ro
+      - ./certs:/certs:ro

@@ -1,0 +1,30 @@
+version: 0.1
+
+log:
+  fields:
+    service: registry
+
+storage:
+  cache:
+    blobdescriptor: redis
+
+redis:
+  pool:
+    maxidle: 16
+    maxactive: 64
+    idletimeout: 300s
+  dialtimeout: 100ms
+  readtimeout: 100ms
+  writetimeout: 100ms
+
+http:
+  addr: :443
+  headers:
+    X-Content-Type-Options: [nosniff]
+
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+
